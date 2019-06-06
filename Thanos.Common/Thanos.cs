@@ -4,7 +4,9 @@ using System.Text;
 
 namespace Thanos.Common
 {
-    class Thanos
+    public class Thanos : Person
     {
+        public override string Name => "Thanos";
+
     }
 }
