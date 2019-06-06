@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Text;
 using Thanos.Common;
 
-
 namespace Thanos.Tests
 {
     [TestFixture]
@@ -13,19 +12,11 @@ namespace Thanos.Tests
     {
         Common.InfinityGauntlet Gauntlet;
 
-        public InfinityGauntlet()
-        {
-            Gauntlet = Common.InfinityGauntlet.Instance;
-        }
-
-        // Gauntlet is a singleton, we have to remove wearers before each test
-        [SetUp]
-        public void RemoveGauntlet()
-        { Gauntlet.Remove(); }
-
         [TestCaseSource(typeof(MyData), "InfinityStones")]
         public void CanAddStoneToGauntlet(InfinityStones stone)
         {
+            Gauntlet = new Common.InfinityGauntlet();
+
             Gauntlet.PlaceStone(stone);
 
             var sut = Gauntlet.ContainsStone(stone);
@@ -36,6 +27,8 @@ namespace Thanos.Tests
         [TestCaseSource(typeof(MyData), "InfinityStones")]
         public void CanRemoveStoneFromGauntlet(InfinityStones stone)
         {
+            Gauntlet = new Common.InfinityGauntlet();
+
             Gauntlet.PlaceStone(stone);
 
             Gauntlet.RemoveStone(stone);
@@ -48,6 +41,8 @@ namespace Thanos.Tests
         [TestCaseSource(typeof(MyData), "InfinityStones")]
         public void GauntletDoesNotContainsStoneIfNotAdded(InfinityStones stone)
         {
+            Gauntlet = new Common.InfinityGauntlet();
+
             var sut = Gauntlet.ContainsStone(stone);
 
             sut.Should().BeFalse();
@@ -56,6 +51,8 @@ namespace Thanos.Tests
         [Test]
         public void OnlyOnePersonCanWearTheGauntletAtATime()
         {
+            Gauntlet = new Common.InfinityGauntlet();
+
             Gauntlet.Wear(Thanos);
             Gauntlet.Wear(Hulk);
 
@@ -67,6 +64,8 @@ namespace Thanos.Tests
         [Test]
         public void APersonCanWearGauntletIfRemovedFromSomeoneElse()
         {
+            Gauntlet = new Common.InfinityGauntlet();
+
             Gauntlet.Wear(Thanos);
             Gauntlet.Remove();
 

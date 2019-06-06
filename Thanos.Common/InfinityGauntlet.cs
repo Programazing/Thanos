@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Thanos.Common
@@ -9,45 +10,25 @@ namespace Thanos.Common
         HashSet<InfinityStones> Stones = new HashSet<InfinityStones>();
         public string Wearer { get; private set; }
 
-        private InfinityGauntlet()
-        {
+        public InfinityGauntlet(){}
 
-        }
-        private static readonly Lazy<InfinityGauntlet> lazy = new Lazy<InfinityGauntlet>(() => new InfinityGauntlet());
+        private static readonly Lazy<InfinityGauntlet> lazy = 
+            new Lazy<InfinityGauntlet>(() => new InfinityGauntlet());
 
-        public static InfinityGauntlet Instance
-        {
-            get
-            {
-                return lazy.Value;
-            }
-        }
-        public void PlaceStone(InfinityStones stone)
-        {
-            Stones.Add(stone);
-        }
+        public static InfinityGauntlet Instance => lazy.Value;
 
-        public void RemoveStone(InfinityStones stone)
-        {
-            Stones.Remove(stone);
-        }
+        public void PlaceStone(InfinityStones stone) => Stones.Add(stone);
 
-        public bool ContainsStone(InfinityStones stone)
-        {
-            return Stones.Contains(stone);
-        }
+        public void RemoveStone(InfinityStones stone) => Stones.Remove(stone);
+
+        public bool ContainsStone(InfinityStones stone) => Stones.Contains(stone);
 
         public void Wear(IPerson person)
         {
-            if(string.IsNullOrEmpty(Wearer))
+            if (string.IsNullOrEmpty(Wearer))
                 Wearer = person.Name;
         }
 
-        public void Remove()
-        {
-            Wearer = "";
-        }
-
-        // public static List<T> Snap<T>(List<T> universe) => universe.ReduceByHalf();
+        public void Remove() => Wearer = String.Empty;
     }
 }
