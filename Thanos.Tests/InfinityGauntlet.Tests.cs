@@ -56,46 +56,36 @@ namespace Thanos.Tests
         [Test]
         public void OnlyOnePersonCanWearTheGauntletAtATime()
         {
-            IPerson thanos = new Person()
-            {
-                Name = "Thanos"
-            };
-
-            IPerson hulk = new Person()
-            {
-                Name = "Hulk"
-            };
-
-            Gauntlet.Wear(thanos);
-            Gauntlet.Wear(hulk);
+            Gauntlet.Wear(Thanos);
+            Gauntlet.Wear(Hulk);
 
             var sut = Gauntlet.Wearer;
 
-            sut.Should().BeEquivalentTo(thanos.Name);
+            sut.Should().BeEquivalentTo(Thanos.Name);
         }
 
         [Test]
         public void APersonCanWearGauntletIfRemovedFromSomeoneElse()
         {
-            IPerson thanos = new Person()
-            {
-                Name = "Thanos"
-            };
-
-            IPerson hulk = new Person()
-            {
-                Name = "Hulk"
-            };
-
-            Gauntlet.Wear(thanos);
+            Gauntlet.Wear(Thanos);
             Gauntlet.Remove();
 
-            Gauntlet.Wear(hulk);
+            Gauntlet.Wear(Hulk);
 
             var sut = Gauntlet.Wearer;
 
-            sut.Should().BeEquivalentTo(hulk.Name);
+            sut.Should().BeEquivalentTo(Hulk.Name);
         }
+
+        IPerson Thanos = new Person()
+        {
+            Name = "Thanos"
+        };
+
+        IPerson Hulk = new Person()
+        {
+            Name = "Hulk"
+        };
     }
 
     class MyData
