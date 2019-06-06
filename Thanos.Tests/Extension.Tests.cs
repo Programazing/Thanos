@@ -23,7 +23,7 @@ namespace Thanos.Tests
             var alphabet = new List<string>() { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n",
             "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
 
-            var halfOfList = alphabet.ReduceListByHalf();
+            var halfOfList = alphabet.ReduceByHalf();
 
             halfOfList.Should().HaveCount(alphabet.Count / 2);
         }

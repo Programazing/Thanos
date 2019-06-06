@@ -7,7 +7,7 @@ namespace Thanos.Common
 {
     public static class Extensions
     {
-        public static List<T> ReduceListByHalf<T>(this List<T> input)
+        public static List<T> ReduceByHalf<T>(this List<T> input)
         {
             var output = new List<T>(input);
 
