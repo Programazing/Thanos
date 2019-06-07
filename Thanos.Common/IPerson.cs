@@ -3,7 +3,7 @@
     public interface IPerson
     {
         string Name { get; set; }
-        bool isWearingInfinityGauntlet { get; set; }
+        bool IsWearingInfinityGauntlet { get; set; }
         int HP { get; set; }
 
         void WearInfinityGauntlet();

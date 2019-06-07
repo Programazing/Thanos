@@ -28,7 +28,7 @@ namespace Thanos.Tests
 
             thanos.WearInfinityGauntlet();
 
-            thanos.isWearingInfinityGauntlet.Should().BeTrue();
+            thanos.IsWearingInfinityGauntlet.Should().BeTrue();
         }
     }
 }
