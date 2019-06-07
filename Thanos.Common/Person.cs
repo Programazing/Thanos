@@ -20,7 +20,10 @@
         public virtual void RemoveInfinityGauntlet()
         {
             if(IsWearingInfinityGauntlet)
+            {
                 Gauntlet.Remove();
+                IsWearingInfinityGauntlet = false;
+            }
         }
     }
 }
